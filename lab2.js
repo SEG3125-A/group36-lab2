@@ -15,19 +15,19 @@ let items=[
         name:"Chicken",
         restrictions:["none"],
         preferences:["organic","non-organic","all"],
-        price:200,
+        price:400,
     },
     {
         name:"Brocolli",
         restrictions:["vegetarian","none"],
         preferences:["organic","all"],
-        price:200,
+        price:150,
     },
     {
         name:"Mushroom",
         restrictions:["vegetarian","none"],
         preferences:["organic","all"],
-        price:200,
+        price:75,
     },
     {
         name:"Potato",
@@ -39,10 +39,13 @@ let items=[
         name:"Almond Milk",
         restrictions:["vegetarian","gluten-free","none"],
         preferences:["non-organic","all"],
-        price:200,
+        price:100,
     }
 
 ];
+
+//sort items by price
+items.sort((a,b)=>a.price-b.price);
 
 
 //this function help changing the main display depending on the sscetion we want to access
