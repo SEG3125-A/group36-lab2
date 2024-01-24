@@ -1,0 +1,34 @@
+
+
+body{
+    
+}
+nav{
+    border: 1px solid black;
+}
+nav > ul{
+    display: flex;
+    align-items: center;
+    justify-content:space-evenly ;
+    border: 0px solid black;
+    list-style-type: none;
+    height:;
+}
+nav >ul > li{
+    border: 1px solid black;
+    margin: 0;
+    padding: 0px 30px;
+    cursor: pointer;
+}
+div{
+    border:1px solid black;
+}
+.client{
+    display: block;
+}
+.products{
+    display: none;
+}
+.cart{
+    display: none;
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang ="en">
+    <head>
+        <title>Survey</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="lab2.css">
+        <meta charset="utf-8">
+        <script defer src="lab2.js"></script>
+        <!-- It help loading the script after the html document-->
+    </head>
+    <body>
+        <h1> My shop</h1>
+        <nav class="nav-bar">
+            <ul>
+                <li onclick="changeSection('client')">
+                    Customer
+                </li>
+                <li onclick="changeSection('products')">
+                    Products
+                </li>
+                <li onclick="changeSection('cart')">
+                    Cart
+                </li>
+            </ul>
+        </nav>
+
+        <section>
+            <div class="client">
+                <h2>Customer Information</h2>
+                <form>
+                    <p> Enter your name </p>
+                    <input type="text" name="username" value="test" placeholder="Name"><br/><br/>
+
+                    <label>Choose your preferences </label><br/>
+                    <input type="checkbox" name="restriction1" value="vegetarian"/>Vegetarian <br>
+                    <input type="checkbox" name="restriction2" value="gluten-free"/>Gluten free <br>
+
+                    </br><label> You might have some preferences, so choose your category below</label><br>
+                    <select name="preference">
+                        <option  value="organic">Organic</option>
+                        <option  value="non-organic">Non-Organic</option>
+                        <option  value="all" selected>All</option>
+                    </select></form></br></br>
+
+                    <input type="button" value="Update preferences" onclick="updateClientSection()">
+                </form>
+            </div>
+
+            <div class="products">
+                <h2>Product List</h2>
+
+                <label>Select the desired items </label><br/>
+                <form>
+                    <p> OOPS!!!</br>You didn't set your preferences yet</p>
+                </form>
+            </div>
+
+            <div class="cart">
+                <h2>Shopping cart</h2>
+                <p>No user registered</p>
+                <ul>
+                    There is no items in the cart
+                </ul>
+
+                <p> Total <span>0</span> $ </p>
+            </div>
+
+        </section>
+
+        <footer>
+            <p>Designed by Tony Waffo, Eric Peng and Jordan Takefman</p>
+        </footer>
+    </body>
+</html>
