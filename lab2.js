@@ -121,6 +121,9 @@ function updateClientSection(){
     //Make sure to put these functions in these orders otherwise, the cart won't update items properly when you update client preferncs
     updateProductSection();
     updateCartSection()
+
+    //change the active section to the product section
+    changeSection("products");
 }
 
 
@@ -163,7 +166,7 @@ function updateProductSection(){
     //create and add a subnit button
     const submitBtn=document.createElement("input");
     submitBtn.type="button";
-    submitBtn.value="Add items to card";
+    submitBtn.value="Add items to cart";
 
     submitBtn.addEventListener("click",updateCartSection);
     form.appendChild(breakline);
@@ -172,12 +175,15 @@ function updateProductSection(){
 
     //empty the list 
     filteredItems=[];
+
 }
 
 
 // create the cart based on what was selected in the product section
 function updateCartSection(){
-
+    //change the active section to the cart section
+    changeSection("cart");
+    
     //update the username and set the total to 0
     document.querySelector(".cart p").innerHTML="User:  "+ username;
     document.querySelector(".cart span").innerHTML="0";

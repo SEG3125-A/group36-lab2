@@ -3,8 +3,19 @@
 body{
     
 }
+h1{
+    text-align: center;
+    font-size: 50px;
+    color:rgb(14, 91, 62);
+}
+h2{
+    font-size: 30px;
+}
 nav{
     border: 1px solid black;
+    background-color: rgb(14, 91, 62);
+    color: white;
+
 }
 nav > ul{
     display: flex;
@@ -15,16 +26,25 @@ nav > ul{
     height:;
 }
 nav >ul > li{
-    border: 1px solid black;
+    width: 100px;
+    border: 0px solid black;
     margin: 0;
-    padding: 0px 30px;
     cursor: pointer;
+    text-align: center;
+    transition: 0.5s;
+}
+nav >ul > li:hover{
+    text-indent: 10px;
+    text-shadow: 5px 5px rgba(5, 30, 20, 0.968);
 }
 div{
+    background-color: rgba(128, 128, 128, 0.486);
     border:1px solid black;
+    padding: 0 0 20px 20px;
 }
 .client{
     display: block;
+
 }
 .products{
     display: none;
@@ -32,3 +52,23 @@ div{
 .cart{
     display: none;
 }
+input[type="text"], select{
+    padding:5px;
+    border-radius: 3px;
+    border: none;
+}
+input[type="button"]{
+    border: none;
+    padding: 8px;
+    border-radius: 7px;
+    background-color:rgb(62, 61, 61) ;
+    color: white;
+    transition: 0.05s;
+}
+input[type="button"]:hover{
+    background-color: rgb(14, 91, 62);
+}
+input[type="button"]:active{
+    transform: scale(1.05);
+}
+
