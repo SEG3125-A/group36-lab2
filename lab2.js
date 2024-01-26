@@ -14,33 +14,69 @@ let items=[
     {
         name:"Chicken",
         restrictions:["none"],
-        preferences:["organic","non-organic","all"],
-        price:400,
+        preferences:["non-organic","all"],
+        price:20,
     },
     {
-        name:"Brocolli",
-        restrictions:["vegetarian","none"],
+        name:"Broccoli",
+        restrictions:["vegetarian","gluten-free","none"],
         preferences:["organic","all"],
-        price:150,
+        price:7,
     },
     {
         name:"Mushroom",
-        restrictions:["vegetarian","none"],
-        preferences:["organic","all"],
-        price:75,
+        restrictions:["vegetarian","gluten-free","none"],
+        preferences:["non-organic","all"],
+        price:8,
     },
     {
         name:"Potato",
-        restrictions:["none"],
-        preferences:["non-organic","all"],
-        price:200,
-    },
-    {
-        name:"Almond Milk",
         restrictions:["vegetarian","gluten-free","none"],
         preferences:["non-organic","all"],
-        price:100,
-    }
+        price:10,
+    },
+    {
+        name:"Milk",
+        restrictions:["none"],
+        preferences:["organic","all"],
+        price:5,
+    },
+    {
+        name:"Porc",
+        restrictions:["none"],
+        preferences:["organic","non-organic","all"],
+        price:30,
+    },
+    {
+        name:"Cheese",
+        restrictions:["gluten-free","none"],
+        preferences:["organic","all"],
+        price:10,
+    },
+    {
+        name:"Tomato",
+        restrictions:["vegetarian","gluten-free","none"],
+        preferences:["organic","all"],
+        price:7,
+    },
+    {
+        name:"Tofu",
+        restrictions:["vegetarian","gluten-free","none"],
+        preferences:["non-organic","all"],
+        price:10,
+    },
+    {
+        name:"Sausage",
+        restrictions:["none"],
+        preferences:["organic","all"],
+        price:8,
+    },
+    {
+        name:"Ice cream",
+        restrictions:["gluten-free","none"],
+        preferences:["non-organic","all"],
+        price:15,
+    },
 
 ];
 
