@@ -81,8 +81,10 @@ function updateClientSection(){
     if(preferenceChecked){
         clientPreference= preferenceChecked.value; //retrieve the value associated to the option
     }
-    updateCartSection()
+
+    //Make sure to put these functions in these orders otherwise, the cart won't update items properly when you update client preferncs
     updateProductSection();
+    updateCartSection()
 }
 
 
@@ -114,7 +116,7 @@ function updateProductSection(){
         // Create label for the checkbox
         const label = document.createElement("label");
         label.appendChild(inputCheckbox);
-        label.appendChild(document.createTextNode(filteredItems[i].name));
+        label.appendChild(document.createTextNode(filteredItems[i].name + " - " + filteredItems[i].price +" $"));
 
         //add a breakline for a nicer display
         const breakline=document.createElement("br");
@@ -139,6 +141,7 @@ function updateProductSection(){
 
 // create the cart based on what was selected in the product section
 function updateCartSection(){
+
     //update the username and set the total to 0
     document.querySelector(".cart p").innerHTML="User:  "+ username;
     document.querySelector(".cart span").innerHTML="0";
@@ -157,14 +160,13 @@ function updateCartSection(){
             clientCart.push(obj);// push the item(as an object now) to the customer's cart
             //console.log(obj.name);
         }
-
-        //calculate the user total and render every item on the display
-        for(let i=0;i<clientCart.length;i++){  
-            const li=document.createElement("li");
-            li.appendChild(document.createTextNode(clientCart[i].name));
-            ul.appendChild(li);
-            total+=clientCart[i].price;
-        }
+    }
+     //calculate the user total and render every item on the display
+     for(let i=0;i<clientCart.length;i++){  
+        const li=document.createElement("li");
+        li.appendChild(document.createTextNode(clientCart[i].name));
+        ul.appendChild(li);
+        total+=clientCart[i].price;
     }
     document.querySelector(".cart span").innerHTML=total;
 }
