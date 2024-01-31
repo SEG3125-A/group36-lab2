@@ -4,13 +4,23 @@
         <title>StuShop</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="lab2.css">
+        <link rel="stylesheet" href="lab3.css">
         <meta charset="utf-8">
-        <script defer src="lab2.js"></script>
+        <script defer src="lab3.js"></script>
         <!-- It help loading the script after the html document-->
     </head>
     <body>
         <h1> StuShop</h1>
+        <header>
+            <div class="logo">
+                <i>StuShop</i>
+            </div>
+            <div class="searchbox">
+                <i></i>
+                <input type="search" placeholder="Search an article by name"/>
+                <input type="button" value="Search" onclick="searchItem()"/>
+            </div>
+        </header>
         <nav class="nav-bar">
             <ul>
                 <li onclick="changeSection('client')">
@@ -41,7 +51,7 @@
                         <option  value="organic">Organic</option>
                         <option  value="non-organic">Non-Organic</option>
                         <option  value="all" selected>All</option>
-                    </select></form></br></br>
+                    </select></br></br>
 
                     <input type="button" value="Update preferences" onclick="updateClientSection()">
                 </form>
@@ -49,6 +59,17 @@
 
             <div class="products">
                 <h2>Product List</h2>
+
+                <label> Pick any category</label><br>
+                <select name="category">
+                    <option  value="all" selected>All</option>
+                    <option  value="vegetables">Vegetables</option>
+                    <option  value="dairy">Dairy</option>
+                    <option  value="fruits">Fruits</option>
+                    <option  value="meats">Meats</option>
+                </select></br></br>
+                <input type="range" name="price" min="0" max="20" value="10" step="1" oninput="filterByPrice(this.value)"/>
+                </br></br>
 
                 <label>Select the desired items </label><br/>
                 <form>

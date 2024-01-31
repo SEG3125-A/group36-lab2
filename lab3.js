@@ -10,78 +10,112 @@ let clientCart=[];
 let filteredItems=[]; //result of the filtering items by restrictions and preferences
 
 //All items
-let items=[
+//let allItems
+let allItems=[
     {
         name:"Chicken",
         restrictions:["none"],
         preferences:["non-organic","all"],
+        category:"meats",
         price:20,
+        picture:"",
     },
     {
         name:"Broccoli",
         restrictions:["vegetarian","gluten-free","none"],
         preferences:["organic","all"],
+        category:"vegetables",
         price:7,
+        picture:"",
     },
     {
         name:"Mushroom",
         restrictions:["vegetarian","gluten-free","none"],
         preferences:["non-organic","all"],
+        category:"vegetables",
         price:8,
+        picture:"",
     },
     {
         name:"Potato",
         restrictions:["vegetarian","gluten-free","none"],
         preferences:["non-organic","all"],
+        category:"vegetables",
         price:10,
+        picture:"",
     },
     {
         name:"Milk",
         restrictions:["none"],
         preferences:["organic","all"],
+        category:"dairy",
         price:5,
+        picture:"",
     },
     {
         name:"Porc",
         restrictions:["none"],
         preferences:["organic","non-organic","all"],
+        category:"meats",
         price:30,
+        picture:"",
     },
     {
         name:"Cheese",
         restrictions:["gluten-free","none"],
         preferences:["organic","all"],
+        category:"dairy",
         price:10,
+        picture:"",
     },
     {
         name:"Tomato",
         restrictions:["vegetarian","gluten-free","none"],
         preferences:["organic","all"],
+        category:"fruits",
         price:7,
+        picture:"",
     },
     {
         name:"Tofu",
         restrictions:["vegetarian","gluten-free","none"],
         preferences:["non-organic","all"],
+        category:"vegetables",
         price:10,
+        picture:"",
     },
     {
         name:"Sausage",
         restrictions:["none"],
         preferences:["organic","all"],
+        category:"meats",
         price:8,
+        picture:"",
     },
     {
         name:"Ice cream",
         restrictions:["gluten-free","none"],
         preferences:["non-organic","all"],
+        category:"dairy",
         price:15,
+        picture:"",
+    },
+    {
+        name:"Banana",
+        restrictions:["none"],
+        preferences:["organic","non-organic","all"],
+        category:"fruits",
+        price:10,
+        picture:"",
     },
 
 ];
 
 //sort items by price
-items.sort((a,b)=>a.price-b.price);
+allItems.sort((a,b)=>a.price-b.price);
+
+let items=allItems
+
 
 
 //this function help changing the main display depending on the sscetion we want to access
@@ -119,23 +153,45 @@ function updateClientSection(){
     }
 
     //Make sure to put these functions in these orders otherwise, the cart won't update items properly when you update client preferncs
-    updateProductSection();
+    updateProductSection("all",0);
     updateCartSection()
 
     //change the active section to the product section
     changeSection("products");
 }
 
+//Add an event listener to all the option of the list to filter by category
+let categoryList=document.querySelector(".products select");
+categoryList.addEventListener("change",function(){
+    updateProductSection(this.value,0);
+})
 
 //render a new display depending on the user's preferences and restrictions
-function updateProductSection(){
+function updateProductSection(filter,byCategoryOrSearch){
+
+    //empty the list 
+    filteredItems=[];
+
     //add items that match user's preferences and restrictions to an array
-    for(let i=0;i<items.length;i++){
-        let containCommonRestrictions=clientRestrictions.some(restriction=>items[i].restrictions.includes(restriction));
-        if(containCommonRestrictions && items[i].preferences.includes(clientPreference) ){
-            filteredItems.push(items[i]);
+    if (filter=="all"){
+        for(let i=0;i<items.length;i++){
+            let containCommonRestrictions=clientRestrictions.some(restriction=>items[i].restrictions.includes(restriction));
+            if(containCommonRestrictions && items[i].preferences.includes(clientPreference) ){
+                filteredItems.push(items[i]);
+            }
+        }
+    }else {
+        for(let i=0;i<items.length;i++){
+            let containCommonRestrictions=clientRestrictions.some(restriction=>items[i].restrictions.includes(restriction));
+            let condition1=byCategoryOrSearch==0 && containCommonRestrictions && items[i].preferences.includes(clientPreference) && items[i].category==filter;
+            let condition2=byCategoryOrSearch==1 && (items[i].name.toLowerCase()==filter || items[i].name.toLowerCase().includes(filter));
+            if(condition1 || condition2 ){
+                filteredItems.push(items[i]);
+                //and i gotta update the product category as well
+            }
         }
     }
+    
 
     const form=document.querySelector(".products form");
     const breakline=document.createElement("br");
@@ -146,15 +202,25 @@ function updateProductSection(){
     //create labels, checkboxes and a submit button to add to the form
     for(let i=0;i<filteredItems.length;i++){
 
-        //create an inpput
+        //create an input
         const inputCheckbox=document.createElement("input");
         inputCheckbox.type="checkbox";
         inputCheckbox.name=filteredItems[i].name;
         inputCheckbox.value=filteredItems[i].name;
 
+        //create image
+        const image=document.createElement("img");
+        //image.src=filteredItems[i].picture;
+        image.src="tof1.jpeg";
+        image.style.width="50px";
+        image.style.height="50px";
+        
+
+
         // Create label for the checkbox
         const label = document.createElement("label");
         label.appendChild(inputCheckbox);
+        label.appendChild(image);
         label.appendChild(document.createTextNode(filteredItems[i].name + " - " + filteredItems[i].price +" $"));
 
         //add a breakline for a nicer display
@@ -200,7 +266,6 @@ function updateCartSection(){
         for(let i=0;i<cart.length;i++){
             obj=transformIntoObject(cart[i]);//transform each item's name to the matching object
             clientCart.push(obj);// push the item(as an object now) to the customer's cart
-            //console.log(obj.name);
         }
     }
      //calculate the user total and render every item on the display
@@ -213,6 +278,22 @@ function updateCartSection(){
     document.querySelector(".cart span").innerHTML=total;
 }
 
+
+function searchItem(){
+    itemToSearch=document.querySelector("header input[type='search']").value.toLowerCase();
+
+    updateClientSection();//make sure to change the section where ever the cutomer is and set the customer preferences to the default one is nothing was set before
+    updateProductSection(itemToSearch,1); 
+    
+}
+
+function filterByPrice(priceMax){
+    //filter by price
+    items=allItems.filter((item)=>item.price<priceMax);
+
+    //update the product section
+    updateProductSection("all",0);
+}
 
 //transform a string into an object
 function transformIntoObject(name){

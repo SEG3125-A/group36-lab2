@@ -11,6 +11,25 @@ h1{
 h2{
     font-size: 30px;
 }
+header{
+    border: 1px solid black;
+    height: 65px;
+}
+.logo{
+    width:20%;
+    height: 90%;
+    float: left;
+    position: ;
+    text-align:center;
+}
+
+.searchbox{
+    width:300px;
+    float: right;
+}
+.searchbox input[type="search"]{
+    padding:10px
+}
 nav{
     border: 1px solid black;
     background-color: rgb(14, 91, 62);
@@ -49,6 +68,18 @@ div{
 .products{
     display: none;
 }
+
+.products form input[type="checkbox"]{
+    margin-bottom: 50px;
+}
+
+.products img{
+    margin-right:10px;
+    border:1px solid black;
+    position: relative;
+    top:20px;
+}
+
 .cart{
     display: none;
 }
@@ -57,7 +88,7 @@ input[type="text"], select{
     border-radius: 3px;
     border: none;
 }
-input[type="button"]{
+.section input[type="button"]{
     border: none;
     padding: 8px;
     border-radius: 7px;
@@ -65,10 +96,10 @@ input[type="button"]{
     color: white;
     transition: 0.05s;
 }
-input[type="button"]:hover{
+.section input[type="button"]:hover{
     background-color: rgb(14, 91, 62);
 }
-input[type="button"]:active{
+.section input[type="button"]:active{
     transform: scale(1.05);
 }
 
